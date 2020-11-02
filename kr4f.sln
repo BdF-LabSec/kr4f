@@ -9,6 +9,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kichal", "kichal\kichal.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p11proxy", "p11proxy\p11proxy.vcxproj", "{ADA82E7A-E2A9-40B2-8DF3-887DE1D80662}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global files", "global files", "{8C1E638F-A19A-497A-B514-65D19C7AC377}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
