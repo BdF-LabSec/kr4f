@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="commun">
+      <UniqueIdentifier>{13ae2fa2-5b85-4977-ae36-a6bc6d51901b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\modules\strings.c">
+      <Filter>commun</Filter>
+    </ClCompile>
+    <ClCompile Include="kilock.c" />
+    <ClCompile Include="..\modules\crypto.c">
+      <Filter>commun</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\modules\strings.h">
+      <Filter>commun</Filter>
+    </ClInclude>
+    <ClInclude Include="kilock.h" />
+    <ClInclude Include="..\modules\crypto.h">
+      <Filter>commun</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
