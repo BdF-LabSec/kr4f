@@ -15,5 +15,7 @@ after_build:
     7z a -tzip -mx -mm=deflate -mpass=15 r4f_trunk_%PLATFORM%.zip .\%PLATFORM%\*.exe .\%PLATFORM%\*.dll .\README.md
 
     7z a -pr4f -mhe=on -t7z -mx -ms=on r4f_trunk_password_%PLATFORM%.7z .\%PLATFORM%\*.exe .\%PLATFORM%\*.dll .\README.md
+
+    7z a -pr4f -tzip -mx -mm=deflate -mpass=15 r4f_trunk_password_%PLATFORM%.zip .\%PLATFORM%\*.exe .\%PLATFORM%\*.dll .\README.md
 artifacts:
 - path: r4f_trunk_*
