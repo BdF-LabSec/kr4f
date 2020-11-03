@@ -3,7 +3,7 @@ image: Visual Studio 2019
 configuration: Release
 platform:
 - x64
-- x86
+- Win32
 shallow_clone: true
 build:
   parallel: true
