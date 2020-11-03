@@ -11,6 +11,7 @@ CK_RV CK_CALL_SPEC HOOK_C_GetFunctionList(CK_FUNCTION_LIST_PTR_PTR ppFunctionLis
 {
 	CK_RV rv;
 	CK_FUNCTION_LIST_PTR ptr;
+	
 	rv = C_GetFunctionList(&ptr);
 	if(rv == CKR_OK)
 	{
@@ -19,8 +20,10 @@ CK_RV CK_CALL_SPEC HOOK_C_GetFunctionList(CK_FUNCTION_LIST_PTR_PTR ppFunctionLis
 		funcList.C_InitToken = HOOK_C_InitToken;
 		funcList.C_Login = HOOK_C_Login;
 		funcList.C_SetPIN = HOOK_C_SetPIN;
+		
 		*ppFunctionList = funcListPtr;
 	}
+	
 	return rv;
 }
 
@@ -29,12 +32,14 @@ CK_RV CK_CALL_SPEC HOOK_C_InitToken(CK_SLOT_ID slotID, CK_UTF8CHAR_PTR pPin, CK_
 	CK_RV rv;
 	CK_BYTE_PTR puk;
 	CK_ULONG pukLen;
+	
 	rv = AdaptPukToValidPuk(pPin, ulPinLen, &puk, &pukLen);
 	if(rv == CKR_OK)
 	{
 		rv = C_InitToken(slotID, puk, pukLen, pLabel);
 		FreeValidPuk(puk);
 	}
+	
 	return rv;
 }
 
@@ -43,6 +48,7 @@ CK_RV CK_CALL_SPEC HOOK_C_Login(CK_SESSION_HANDLE hSession, CK_USER_TYPE userTyp
 	CK_RV rv;
 	CK_BYTE_PTR puk;
 	CK_ULONG pukLen;
+	
 	if (userType != CKU_SO)
 	{
 		rv = C_Login(hSession, userType, pPin, ulPinLen);
@@ -56,6 +62,7 @@ CK_RV CK_CALL_SPEC HOOK_C_Login(CK_SESSION_HANDLE hSession, CK_USER_TYPE userTyp
 			FreeValidPuk(puk);
 		}
 	}
+	
 	return rv;
 }
 
@@ -65,6 +72,7 @@ CK_RV CK_CALL_SPEC HOOK_C_SetPIN(CK_SESSION_HANDLE hSession, CK_UTF8CHAR_PTR pOl
 	CK_SESSION_INFO info;
 	CK_BYTE_PTR oldPuk;
 	CK_ULONG oldPukLen;
+
 	rv = C_GetSessionInfo(hSession, &info);
 	if(rv == CKR_OK)
 	{
@@ -82,12 +90,14 @@ CK_RV CK_CALL_SPEC HOOK_C_SetPIN(CK_SESSION_HANDLE hSession, CK_UTF8CHAR_PTR pOl
 			}
 		}
 	}
+	
 	return rv;
 }
 
 CK_RV AdaptPukToValidPuk(CK_UTF8CHAR_PTR pPuk, CK_ULONG ulPukLen, CK_UTF8CHAR_PTR *ppValidPuk, CK_ULONG *pulValidPukLen)
 {
 	CK_RV status;
+	
 	if(pPuk && ulPukLen && ppValidPuk && pulValidPukLen)
 	{
 		*pulValidPukLen = 0;
@@ -108,6 +118,7 @@ CK_RV AdaptPukToValidPuk(CK_UTF8CHAR_PTR pPuk, CK_ULONG ulPukLen, CK_UTF8CHAR_PT
 		else status = CKR_HOST_MEMORY;
 	}
 	else status = CKR_ARGUMENTS_BAD;
+	
 	return status;
 }
 

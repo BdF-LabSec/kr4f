@@ -136,7 +136,7 @@ BOOLEAN GetResponseFromChallengeAndConsole(IN LPCBYTE Challenge, IN DWORD cbChal
 
 	if (SetClip(Challenge, cbChallenge))
 	{
-		kprintf(L"| ... copie dans le presse papier!\n");
+		kprintf(L"i ...copie dans le presse papier!\n");
 	}
 
 	kprintf(L"| Response?: ");
